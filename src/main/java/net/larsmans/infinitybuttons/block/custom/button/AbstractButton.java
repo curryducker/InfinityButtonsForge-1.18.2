@@ -52,7 +52,7 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
 
     protected AbstractButton(boolean isWooden, BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(PRESSED, false).setValue(FACE, AttachFace.WALL));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(PRESSED, false).setValue(FACE, AttachFace.FLOOR));
         this.wooden = isWooden;
     }
 
