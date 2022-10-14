@@ -71,14 +71,17 @@ public class ModBlocks {
     public static final RegistryObject<Block> GOLD_BUTTON = registerBlock("gold_button",
             () -> new ArrowButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.METAL)));
 
+    //public static final RegistryObject<Block> DIAMOND_BUTTON = registerBlock("diamond_button",
+    //        () -> new DiamondButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.METAL)));
+
     public static final RegistryObject<Block> PRISMARINE_BUTTON = registerBlock("prismarine_button",
-            () -> new PrismarineButton(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.COLOR_CYAN).strength(0.5f).noCollission().sound(SoundType.STONE)));
+            () -> new PrismarineButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> PRISMARINE_BRICK_BUTTON = registerBlock("prismarine_brick_button",
-            () -> new PrismarineButton(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.DIAMOND).strength(0.5f).noCollission().sound(SoundType.STONE)));
+            () -> new PrismarineButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> DARK_PRISMARINE_BUTTON = registerBlock("dark_prismarine_button",
-            () -> new PrismarineButton(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.DIAMOND).strength(0.5f).noCollission().sound(SoundType.STONE)));
+            () -> new PrismarineButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.STONE)));
 
     /*
     -------------
@@ -150,13 +153,13 @@ public class ModBlocks {
             () -> new ArrowLargeButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.METAL)));
 
     public static final RegistryObject<Block> PRISMARINE_LARGE_BUTTON = registerBlock("prismarine_large_button",
-            () -> new PrismarineLargeButton(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.COLOR_CYAN).strength(0.5f).noCollission().sound(SoundType.STONE)));
+            () -> new PrismarineLargeButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> PRISMARINE_BRICK_LARGE_BUTTON = registerBlock("prismarine_brick_large_button",
-            () -> new PrismarineLargeButton(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.DIAMOND).strength(0.5f).noCollission().sound(SoundType.STONE)));
+            () -> new PrismarineLargeButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> DARK_PRISMARINE_LARGE_BUTTON = registerBlock("dark_prismarine_large_button",
-            () -> new PrismarineLargeButton(BlockBehaviour.Properties.of(Material.DECORATION, MaterialColor.DIAMOND).strength(0.5f).noCollission().sound(SoundType.STONE)));
+            () -> new PrismarineLargeButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.STONE)));
 
     /*
     -----------------
@@ -210,6 +213,9 @@ public class ModBlocks {
             () -> new EmergencyButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noOcclusion().sound(SoundType.METAL)));
 
     public static final RegistryObject<Block> BLACK_EMERGENCY_BUTTON = registerBlock("black_emergency_button",
+            () -> new EmergencyButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noOcclusion().sound(SoundType.METAL)));
+
+    public static final RegistryObject<Block> FANCY_EMERGENCY_BUTTON = registerBlock("fancy_emergency_button",
             () -> new EmergencyButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noOcclusion().sound(SoundType.METAL)));
 
     /*
