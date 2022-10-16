@@ -306,7 +306,40 @@ public class ModBlocks {
             () -> new PlankSecretButton(BlockBehaviour.Properties.of(Material.NETHER_WOOD, MaterialColor.CRIMSON_STEM).strength(2.0f, 3.0f).noOcclusion().sound(SoundType.WOOD)));
 
     public static final RegistryObject<Block> WARPED_PLANK_SECRET_BUTTON = registerBlock("warped_plank_secret_button",
-            () -> new PlankSecretButton(BlockBehaviour.Properties.of(Material.NETHER_WOOD, MaterialColor.WARPED_STEM).strength(2.0f, 3.0f).noOcclusion().sound(SoundType.WOOD).requiresCorrectToolForDrops()));
+            () -> new PlankSecretButton(BlockBehaviour.Properties.of(Material.NETHER_WOOD, MaterialColor.WARPED_STEM).strength(2.0f, 3.0f).noOcclusion().sound(SoundType.WOOD)));
+
+    public static final RegistryObject<Block> PERMAFROST_BRICK_SECRET_BUTTON = registerCompatBlock("quark", "permafrost_brick_secret_button",
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_LIGHT_BLUE).strength(1.5f, 10.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> BLUE_NETHER_BRICK_SECRET_BUTTON = registerCompatBlock("quark", "blue_nether_brick_secret_button",
+            () -> new FullBlockBrickSecretButton(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.NETHER).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> POLISHED_GRANITE_BRICK_SECRET_BUTTON = registerCompatBlock("quark", "polished_granite_brick_secret_button",
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIRT).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> POLISHED_DIORITE_BRICK_SECRET_BUTTON = registerCompatBlock("quark", "polished_diorite_brick_secret_button",
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.QUARTZ).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> POLISHED_ANDESITE_BRICK_SECRET_BUTTON = registerCompatBlock("quark", "polished_andesite_brick_secret_button",
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> POLISHED_CALCITE_BRICK_SECRET_BUTTON = registerCompatBlock("quark", "polished_calcite_brick_secret_button",
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_WHITE).strength(0.75f, 0.75f).noOcclusion().sound(SoundType.CALCITE).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> POLISHED_DRIPSTONE_BRICK_SECRET_BUTTON = registerCompatBlock("quark", "polished_dripstone_brick_secret_button",
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_BROWN).strength(1.5f, 1.0f).noOcclusion().sound(SoundType.DRIPSTONE_BLOCK).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> POLISHED_TUFF_BRICK_SECRET_BUTTON = registerCompatBlock("quark", "polished_tuff_brick_secret_button",
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_GRAY).strength(1.5f, 1.0f).noOcclusion().sound(SoundType.TUFF).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> POLISHED_LIMESTONE_BRICK_SECRET_BUTTON = registerCompatBlock("quark", "polished_limestone_brick_secret_button",
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> POLISHED_JASPER_BRICK_SECRET_BUTTON = registerCompatBlock("quark", "polished_jasper_brick_secret_button",
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.TERRACOTTA_RED).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> POLISHED_SHALE_BRICK_SECRET_BUTTON = registerCompatBlock("quark", "polished_shale_brick_secret_button",
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.ICE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops()));
     
      /*
     ------

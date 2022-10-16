@@ -87,8 +87,21 @@
   "block.infinitybuttons.jungle_plank_secret_button": "Jungle Plank Secret Button",
   "block.infinitybuttons.crimson_plank_secret_button": "Crimson Plank Secret Button",
   "block.infinitybuttons.warped_plank_secret_button": "Warped Plank Secret Button",
+
   "block.infinitybuttons.doorbell": "Doorbell",
   "block.infinitybuttons.doorbell_button": "Doorbell Button",
+
+  "block.infinitybuttons.permafrost_brick_secret_button": "Permafrost Brick Secret Button",
+  "block.infinitybuttons.blue_nether_brick_secret_button": "Blue Nether Brick Secret Button",
+  "block.infinitybuttons.polished_granite_brick_secret_button": "Polished Granite Brick Secret Button",
+  "block.infinitybuttons.polished_diorite_brick_secret_button": "Polished Diorite Brick Secret Button",
+  "block.infinitybuttons.polished_andesite_brick_secret_button": "Polished Andesite Brick Secret Button",
+  "block.infinitybuttons.polished_calcite_brick_secret_button": "Polished Calcite Brick Secret Button",
+  "block.infinitybuttons.polished_dripstone_brick_secret_button": "Polished Dripstone Brick Secret Button",
+  "block.infinitybuttons.polished_tuff_brick_secret_button": "Polished Tuff Brick Secret Button",
+  "block.infinitybuttons.polished_limestone_brick_secret_button": "Polished Limestone Brick Secret Button",
+  "block.infinitybuttons.polished_jasper_brick_secret_button": "Polished Jasper Brick Secret Button",
+  "block.infinitybuttons.polished_shale_brick_secret_button": "Polished Shale Brick Secret Button",
 
   "block.infinitybuttons.torch_button": "Torch Button",
   "block.infinitybuttons.torch_lever": "Torch Lever",
