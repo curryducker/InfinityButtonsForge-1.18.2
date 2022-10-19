@@ -2,7 +2,7 @@ package net.larsmans.infinitybuttons.block.custom;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import net.larsmans.infinitybuttons.InfinityButtonsConfig;
-import net.larsmans.infinitybuttons.sounds.ModSounds;
+import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -123,7 +123,7 @@ public class EmergencyButton extends FaceAttachedHorizontalDirectionalBlock {
             this.powerBlock(state, worldIn, pos);
             this.playSound(player, worldIn, pos, true);
             if (config.alarmSound) {
-                worldIn.playSound(player, pos, ModSounds.ALARM.get(), SoundSource.BLOCKS, 2f, 0.6f);
+                worldIn.playSound(player, pos, InfinityButtonsSounds.ALARM.get(), SoundSource.BLOCKS, 2f, 0.6f);
             }
             return InteractionResult.sidedSuccess(worldIn.isClientSide);
         }

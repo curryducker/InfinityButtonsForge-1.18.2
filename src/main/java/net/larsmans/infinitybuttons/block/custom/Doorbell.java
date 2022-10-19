@@ -1,6 +1,6 @@
 package net.larsmans.infinitybuttons.block.custom;
 
-import net.larsmans.infinitybuttons.sounds.ModSounds;
+import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -95,7 +95,7 @@ public class Doorbell extends HorizontalDirectionalBlock {
     }
 
     protected void playSound(@Nullable Player playerIn, LevelAccessor worldIn, BlockPos pos, boolean hitByArrow) {
-        worldIn.playSound(hitByArrow ? playerIn : null, pos, ModSounds.DOORBELL.get(), SoundSource.BLOCKS, 0.3F, 1f);
+        worldIn.playSound(hitByArrow ? playerIn : null, pos, InfinityButtonsSounds.DOORBELL.get(), SoundSource.BLOCKS, 0.3F, 1f);
     }
 
     @Override

@@ -3,9 +3,9 @@ package net.larsmans.infinitybuttons;
 import com.mojang.logging.LogUtils;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
-import net.larsmans.infinitybuttons.block.ModBlocks;
-import net.larsmans.infinitybuttons.item.ModItems;
-import net.larsmans.infinitybuttons.sounds.ModSounds;
+import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
+import net.larsmans.infinitybuttons.item.InfinityButtonsItems;
+import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -38,9 +38,9 @@ public class InfinityButtons
     public InfinityButtons() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModItems.register(eventBus);
-        ModBlocks.register(eventBus);
-        ModSounds.register(eventBus);
+        InfinityButtonsItems.register(eventBus);
+        InfinityButtonsBlocks.register(eventBus);
+        InfinityButtonsSounds.register(eventBus);
 
         AutoConfig.register(InfinityButtonsConfig.class, Toml4jConfigSerializer::new);
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> InfinityButtonsConfigMenu::registerConfigMenu);

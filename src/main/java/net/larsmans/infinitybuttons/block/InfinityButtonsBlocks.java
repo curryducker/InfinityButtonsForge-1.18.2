@@ -8,8 +8,8 @@ import net.larsmans.infinitybuttons.block.custom.button.*;
 import net.larsmans.infinitybuttons.block.custom.largebutton.*;
 import net.larsmans.infinitybuttons.block.custom.secretbutton.*;
 import net.larsmans.infinitybuttons.block.custom.torch.*;
-import net.larsmans.infinitybuttons.item.ModItemGroup;
-import net.larsmans.infinitybuttons.item.ModItems;
+import net.larsmans.infinitybuttons.item.InfinityButtonsItemGroup;
+import net.larsmans.infinitybuttons.item.InfinityButtonsItems;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -27,7 +27,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
-public class ModBlocks {
+public class InfinityButtonsBlocks {
 
     public static final DeferredRegister<Block> BLOCKS
             = DeferredRegister.create(ForgeRegistries.BLOCKS, InfinityButtons.MOD_ID);
@@ -71,8 +71,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> GOLD_BUTTON = registerBlock("gold_button",
             () -> new ArrowButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.METAL)));
 
-    //public static final RegistryObject<Block> DIAMOND_BUTTON = registerBlock("diamond_button",
-    //        () -> new DiamondButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.METAL)));
+    public static final RegistryObject<Block> DIAMOND_BUTTON = registerBlock("diamond_button",
+            () -> new DiamondButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.METAL)));
 
     public static final RegistryObject<Block> PRISMARINE_BUTTON = registerBlock("prismarine_button",
             () -> new PrismarineButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.STONE)));
@@ -151,6 +151,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> GOLD_LARGE_BUTTON = registerBlock("gold_large_button",
             () -> new ArrowLargeButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.METAL)));
+
+    public static final RegistryObject<Block> DIAMOND_LARGE_BUTTON = registerBlock("diamond_large_button",
+            () -> new DiamondLargeButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.METAL)));
 
     public static final RegistryObject<Block> PRISMARINE_LARGE_BUTTON = registerBlock("prismarine_large_button",
             () -> new PrismarineLargeButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.STONE)));
@@ -407,7 +410,7 @@ public class ModBlocks {
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn, ModItemGroup.INFINITYBUTTONS);
+        registerBlockItem(name, toReturn, InfinityButtonsItemGroup.INFINITYBUTTONS);
         return toReturn;
     }
 
@@ -415,13 +418,13 @@ public class ModBlocks {
         RegistryObject<T> toReturn = null;
         if (ModList.get().isLoaded(modid)) {
             toReturn = BLOCKS.register(name, block);
-            registerBlockItem(name, toReturn, ModItemGroup.INFINITYBUTTONSCOMPAT);
+            registerBlockItem(name, toReturn, InfinityButtonsItemGroup.INFINITYBUTTONSCOMPAT);
         }
         return toReturn;
     }
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block, CreativeModeTab tab) {
-        return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
+        return InfinityButtonsItems.ITEMS.register(name, () -> new BlockItem(block.get(),
                 new Item.Properties().tab(tab)));
     }
 
