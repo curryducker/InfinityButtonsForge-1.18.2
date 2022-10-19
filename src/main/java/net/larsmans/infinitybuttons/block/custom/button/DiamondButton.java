@@ -40,61 +40,63 @@ public class DiamondButton extends AbstractButton{
     @Override
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
-        if (rand.nextInt(3) == 0) {
-            switch (stateIn.getValue(FACE)) {
-                case FLOOR -> {
-                    switch (stateIn.getValue(FACING)) {
-                        case NORTH, SOUTH -> worldIn.addParticle(ParticleTypes.SCRAPE,
-                                (double) pos.getX() + 0.25 + (double)rand.nextFloat() * 0.5,
-                                (double) pos.getY() + 0.125 + (double) rand.nextFloat() * 0.0625,
-                                (double) pos.getZ() + 0.3125 + (double)rand.nextFloat() * 0.375,
-                                0, 0, 0);
-                        case EAST, WEST -> worldIn.addParticle(ParticleTypes.SCRAPE,
-                                (double) pos.getX() + 0.3125 + (double)rand.nextFloat() * 0.375,
-                                (double) pos.getY() + 0.125 + (double) rand.nextFloat() * 0.0625,
-                                (double) pos.getZ() + 0.25 + (double)rand.nextFloat() * 0.5,
-                                0, 0, 0);
+        if (config.diamond_particles) {
+            if (rand.nextInt(3) == 0) {
+                switch (stateIn.getValue(FACE)) {
+                    case FLOOR -> {
+                        switch (stateIn.getValue(FACING)) {
+                            case NORTH, SOUTH -> worldIn.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.25 + (double)rand.nextFloat() * 0.5,
+                                    (double) pos.getY() + 0.125 + (double) rand.nextFloat() * 0.0625,
+                                    (double) pos.getZ() + 0.3125 + (double)rand.nextFloat() * 0.375,
+                                    0, 0, 0);
+                            case EAST, WEST -> worldIn.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.3125 + (double)rand.nextFloat() * 0.375,
+                                    (double) pos.getY() + 0.125 + (double) rand.nextFloat() * 0.0625,
+                                    (double) pos.getZ() + 0.25 + (double)rand.nextFloat() * 0.5,
+                                    0, 0, 0);
+                        }
                     }
-                }
-                case WALL -> {
-                    switch (stateIn.getValue(FACING)) {
-                        case NORTH -> worldIn.addParticle(ParticleTypes.SCRAPE,
-                                (double)pos.getX() + 0.25 + (double)rand.nextFloat() * 0.5,
-                                (double)pos.getY() + 0.3125 + (double)rand.nextFloat() * 0.375,
-                                (double)pos.getZ() + 0.8125 + (double)rand.nextFloat() * 0.0625,
-                                0, 0, 0);
+                    case WALL -> {
+                        switch (stateIn.getValue(FACING)) {
+                            case NORTH -> worldIn.addParticle(ParticleTypes.SCRAPE,
+                                    (double)pos.getX() + 0.25 + (double)rand.nextFloat() * 0.5,
+                                    (double)pos.getY() + 0.3125 + (double)rand.nextFloat() * 0.375,
+                                    (double)pos.getZ() + 0.8125 + (double)rand.nextFloat() * 0.0625,
+                                    0, 0, 0);
 
-                        case EAST -> worldIn.addParticle(ParticleTypes.SCRAPE,
-                                (double)pos.getX() + 0.125 + (double)rand.nextFloat() * 0.0625,
-                                (double)pos.getY() + 0.3125 + (double)rand.nextFloat() * 0.375,
-                                (double)pos.getZ() + 0.25 + (double)rand.nextFloat() * 0.5,
-                                0, 0, 0);
+                            case EAST -> worldIn.addParticle(ParticleTypes.SCRAPE,
+                                    (double)pos.getX() + 0.125 + (double)rand.nextFloat() * 0.0625,
+                                    (double)pos.getY() + 0.3125 + (double)rand.nextFloat() * 0.375,
+                                    (double)pos.getZ() + 0.25 + (double)rand.nextFloat() * 0.5,
+                                    0, 0, 0);
 
-                        case SOUTH -> worldIn.addParticle(ParticleTypes.SCRAPE,
-                                (double)pos.getX() + 0.25 + (double)rand.nextFloat() * 0.5,
-                                (double)pos.getY() + 0.3125 + (double)rand.nextFloat() * 0.375,
-                                (double)pos.getZ() + 0.125 + (double)rand.nextFloat() * 0.0625,
-                                0, 0, 0);
+                            case SOUTH -> worldIn.addParticle(ParticleTypes.SCRAPE,
+                                    (double)pos.getX() + 0.25 + (double)rand.nextFloat() * 0.5,
+                                    (double)pos.getY() + 0.3125 + (double)rand.nextFloat() * 0.375,
+                                    (double)pos.getZ() + 0.125 + (double)rand.nextFloat() * 0.0625,
+                                    0, 0, 0);
 
-                        case WEST -> worldIn.addParticle(ParticleTypes.SCRAPE,
-                                (double)pos.getX() + 0.8125 + (double)rand.nextFloat() * 0.0625,
-                                (double)pos.getY() + 0.3125 + (double)rand.nextFloat() * 0.375,
-                                (double)pos.getZ() + 0.25 + (double)rand.nextFloat() * 0.5,
-                                0, 0, 0);
+                            case WEST -> worldIn.addParticle(ParticleTypes.SCRAPE,
+                                    (double)pos.getX() + 0.8125 + (double)rand.nextFloat() * 0.0625,
+                                    (double)pos.getY() + 0.3125 + (double)rand.nextFloat() * 0.375,
+                                    (double)pos.getZ() + 0.25 + (double)rand.nextFloat() * 0.5,
+                                    0, 0, 0);
+                        }
                     }
-                }
-                case CEILING -> {
-                    switch (stateIn.getValue(FACING)) {
-                        case NORTH, SOUTH -> worldIn.addParticle(ParticleTypes.SCRAPE,
-                                (double) pos.getX() + 0.25 + (double) rand.nextFloat() * 0.5,
-                                (double) pos.getY() + 0.8125 + (double) rand.nextFloat() * 0.0625,
-                                (double) pos.getZ() + 0.3125 + (double) rand.nextFloat() * 0.375,
-                                0, 0, 0);
-                        case EAST, WEST -> worldIn.addParticle(ParticleTypes.SCRAPE,
-                                (double) pos.getX() + 0.3125 + (double) rand.nextFloat() * 0.375,
-                                (double) pos.getY() + 0.8125 + (double) rand.nextFloat() * 0.0625,
-                                (double) pos.getZ() + 0.25 + (double) rand.nextFloat() * 0.5,
-                                0, 0, 0);
+                    case CEILING -> {
+                        switch (stateIn.getValue(FACING)) {
+                            case NORTH, SOUTH -> worldIn.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.25 + (double) rand.nextFloat() * 0.5,
+                                    (double) pos.getY() + 0.8125 + (double) rand.nextFloat() * 0.0625,
+                                    (double) pos.getZ() + 0.3125 + (double) rand.nextFloat() * 0.375,
+                                    0, 0, 0);
+                            case EAST, WEST -> worldIn.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.3125 + (double) rand.nextFloat() * 0.375,
+                                    (double) pos.getY() + 0.8125 + (double) rand.nextFloat() * 0.0625,
+                                    (double) pos.getZ() + 0.25 + (double) rand.nextFloat() * 0.5,
+                                    0, 0, 0);
+                        }
                     }
                 }
             }
