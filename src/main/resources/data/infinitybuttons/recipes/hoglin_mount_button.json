@@ -2,11 +2,11 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "nethers_delight"
+      "modid": "nethersdelight"
     }
   ],
   "type": "minecraft:crafting_shapeless",
-  "ingredients": [{"item": "nethers_delight:hoglin_mount"},{"item": "minecraft:stone_button"}],
+  "ingredients": [{"item": "nethersdelight:hoglin_mount"},{"item": "minecraft:stone_button"}],
   "result": {
     "item": "infinitybuttons:hoglin_mount_button"
   }

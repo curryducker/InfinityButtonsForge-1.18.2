@@ -1,18 +1,18 @@
 {
   "variants": {
     "pressed=false,facing=north": {
-      "model": "nethers_delight:block/hoglin_mount"
+      "model": "nethersdelight:block/hoglin_mount"
     },
     "pressed=false,facing=east": {
-      "model": "nethers_delight:block/hoglin_mount",
+      "model": "nethersdelight:block/hoglin_mount",
       "y": 90
     },
     "pressed=false,facing=south": {
-      "model": "nethers_delight:block/hoglin_mount",
+      "model": "nethersdelight:block/hoglin_mount",
       "y": 180
     },
     "pressed=false,facing=west": {
-      "model": "nethers_delight:block/hoglin_mount",
+      "model": "nethersdelight:block/hoglin_mount",
       "y": 270
     },
     "pressed=true,facing=north": {

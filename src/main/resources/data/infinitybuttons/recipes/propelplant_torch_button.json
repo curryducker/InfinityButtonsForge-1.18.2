@@ -2,19 +2,19 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "nethers_delight"
+      "modid": "nethersdelight"
     }
   ],
   "type": "minecraft:crafting_shaped",
   "key": {
     "P": {
-      "item": "nethers_delight:propelpearl"
+      "item": "nethersdelight:propelpearl"
     },
     "B": {
       "item": "minecraft:stone_button"
     },
     "C": {
-      "item": "nethers_delight:propelplant_cane"
+      "item": "nethersdelight:propelplant_cane"
     }
   },
   "pattern": [

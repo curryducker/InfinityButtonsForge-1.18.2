@@ -22,7 +22,7 @@ public class InfinityButtonsClient {
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_BUTTON.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_LEVER.get(), RenderType.cutout());
-            if (ModList.get().isLoaded("nethers_delight")) {
+            if (ModList.get().isLoaded("nethersdelight")) {
                 ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.PROPELPLANT_TORCH_BUTTON.get(), RenderType.cutout());
                 ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.PROPELPLANT_TORCH_LEVER.get(), RenderType.cutout());
             }

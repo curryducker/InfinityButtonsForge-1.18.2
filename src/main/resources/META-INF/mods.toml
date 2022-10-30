@@ -69,7 +69,7 @@ A mod which adds new exciting buttons!
     ordering="BEFORE"
     side="BOTH"
 [[dependencies.infinitybuttons]]
-    modId="nethers_delight"
+    modId="nethersdelight"
     mandatory=false
     versionRange="[2.2,)"
     ordering="BEFORE"

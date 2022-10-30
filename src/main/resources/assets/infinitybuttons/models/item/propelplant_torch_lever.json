@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "nethers_delight:block/propelplant_torch"
+    "layer0": "nethersdelight:block/propelplant_torch"
   }
 }

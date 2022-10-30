@@ -410,12 +410,12 @@ public class InfinityButtonsBlocks {
                 return 7;
             }).sound(SoundType.WOOD).lootFrom(REDSTONE_TORCH_LEVER)));
 
-    public static final RegistryObject<Block> PROPELPLANT_TORCH_BUTTON = registerCompatBlock("nethers_delight", "propelplant_torch_button",
+    public static final RegistryObject<Block> PROPELPLANT_TORCH_BUTTON = registerCompatBlock("nethersdelight", "propelplant_torch_button",
             () -> new PropelTorchButton(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().lightLevel((p_50876_) -> {
                 return 12;
             }).sound(SoundType.WOOD)));
 
-    public static final RegistryObject<Block> PROPELPLANT_TORCH_LEVER = registerCompatBlock("nethers_delight", "propelplant_torch_lever",
+    public static final RegistryObject<Block> PROPELPLANT_TORCH_LEVER = registerCompatBlock("nethersdelight", "propelplant_torch_lever",
             () -> new PropelTorchLever(BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().lightLevel((p_50876_) -> {
                 return 12;
             }).sound(SoundType.WOOD)));
