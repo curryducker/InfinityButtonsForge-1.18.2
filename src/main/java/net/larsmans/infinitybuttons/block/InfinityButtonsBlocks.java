@@ -358,7 +358,7 @@ public class InfinityButtonsBlocks {
     public static final RegistryObject<Block> DOORBELL_BUTTON = registerBlock("doorbell_button",
             () -> new DoorbellButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.WOOD)));
 
-    public static final RegistryObject<Block> HOGLIN_MOUNT_BUTTON = registerCompatBlock("nethers_delight", "hoglin_mount_button",
+    public static final RegistryObject<Block> HOGLIN_MOUNT_BUTTON = registerCompatBlock("nethersdelight", "hoglin_mount_button",
             () -> new HoglinMountButton(BlockBehaviour.Properties.copy(Blocks.BROWN_WOOL)
                     .lightLevel((p_50876_) -> {
                         return 1;
