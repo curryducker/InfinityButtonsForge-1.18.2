@@ -15,16 +15,22 @@ public class InfinityButtonsClient {
     public static void onInitializeClient(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.TORCH_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.WALL_TORCH_BUTTON.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.TORCH_LEVER.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.WALL_TORCH_LEVER.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.SOUL_TORCH_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.SOUL_WALL_TORCH_BUTTON.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.SOUL_TORCH_LEVER.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.SOUL_WALL_TORCH_LEVER.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.REDSTONE_TORCH_BUTTON.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_BUTTON.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_LEVER.get(), RenderType.cutout());
             if (ModList.get().isLoaded("nethersdelight")) {
                 ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.PROPELPLANT_TORCH_BUTTON.get(), RenderType.cutout());
+                ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.PROPELPLANT_WALL_TORCH_BUTTON.get(), RenderType.cutout());
                 ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.PROPELPLANT_TORCH_LEVER.get(), RenderType.cutout());
+                ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.PROPELPLANT_WALL_TORCH_LEVER.get(), RenderType.cutout());
             }
         });
     }

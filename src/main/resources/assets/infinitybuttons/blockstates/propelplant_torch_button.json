@@ -1,18 +1,18 @@
 {
   "variants": {
     "pressed=false,facing=north": {
-      "model": "nethersdelight:block/propelplant_wall_torch",
+      "model": "nethersdelight:block/propelplant_torch",
       "y": 270
     },
     "pressed=false,facing=east": {
-      "model": "nethersdelight:block/propelplant_wall_torch"
+      "model": "nethersdelight:block/propelplant_torch"
     },
     "pressed=false,facing=west": {
-      "model": "nethersdelight:block/propelplant_wall_torch",
+      "model": "nethersdelight:block/propelplant_torch",
       "y": 180
     },
     "pressed=false,facing=south": {
-      "model": "nethersdelight:block/propelplant_wall_torch",
+      "model": "nethersdelight:block/propelplant_torch",
       "y": 90
     },
     "pressed=true,facing=north": {

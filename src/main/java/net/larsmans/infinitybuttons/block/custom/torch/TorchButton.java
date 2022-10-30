@@ -1,9 +1,7 @@
 package net.larsmans.infinitybuttons.block.custom.torch;
 
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -12,31 +10,29 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.WallTorchBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
-public class TorchButton extends WallTorchBlock {
+public class TorchButton extends TorchBlock {
     public static final BooleanProperty PRESSED = BooleanProperty.create("pressed");
+    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
     public TorchButton(BlockBehaviour.Properties properties, ParticleOptions particleData) {
         super(properties, particleData);
         this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(FACING, Direction.NORTH).setValue(PRESSED, false));
-    }
-
-    @Override
-    public String getDescriptionId() {
-        return Util.makeDescriptionId("block", Registry.BLOCK.getKey(this));
     }
 
     @Override
@@ -45,18 +41,18 @@ public class TorchButton extends WallTorchBlock {
         Direction direction = stateIn.getValue(FACING);
         if (stateIn.getValue(PRESSED)) {
             double d0 = (double) pos.getX() + 0.5D;
-            double d1 = (double) pos.getY() + 0.6D;
+            double d1 = (double) pos.getY() + 0.63D;
             double d2 = (double) pos.getZ() + 0.5D;
             Direction direction2 = direction.getOpposite();
             worldIn.addParticle(ParticleTypes.SMOKE,
-                    d0 + 0.05D * (double) direction2.getStepX(),
-                    d1 + 0.15D,
-                    d2 + 0.05D * (double) direction2.getStepZ(),
+                    d0 + 0.23D * (double) direction2.getStepX(),
+                    d1,
+                    d2 + 0.23D * (double) direction2.getStepZ(),
                     0.0D, 0.0D, 0.0D);
             worldIn.addParticle(this.flameParticle,
-                    d0 + 0.05D * (double) direction2.getStepX(),
-                    d1 + 0.15D,
-                    d2 + 0.05D * (double) direction2.getStepZ(),
+                    d0 + 0.23D * (double) direction2.getStepX(),
+                    d1,
+                    d2 + 0.23D * (double) direction2.getStepZ(),
                     0.0D, 0.0D, 0.0D);
         } else {
             super.animateTick(stateIn, worldIn, pos, rand);
@@ -106,7 +102,7 @@ public class TorchButton extends WallTorchBlock {
 
     @Override
     public int  getDirectSignal(BlockState blockState, BlockGetter blockAccess, BlockPos pos, Direction side) {
-        if (blockState.getValue(PRESSED) && blockState.getValue(FACING) == side) {
+        if (blockState.getValue(PRESSED) && Direction.DOWN.getOpposite() == side) {
             return 15;
         }
         return 0;
@@ -129,6 +125,31 @@ public class TorchButton extends WallTorchBlock {
 
     public void updateNeighbors(BlockState state, Level worldIn, BlockPos pos) {
         worldIn.updateNeighborsAt(pos, this);
-        worldIn.updateNeighborsAt(pos.relative(state.getValue(FACING).getOpposite()), this);
+        worldIn.updateNeighborsAt(pos.relative(Direction.DOWN), this);
+    }
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        Direction[] directions;
+        BlockState blockState = this.defaultBlockState();
+        Level worldView = ctx.getLevel();
+        BlockPos blockPos = ctx.getClickedPos();
+        for (Direction direction : directions = ctx.getNearestLookingDirections()) {
+            Direction direction2;
+            if (!direction.getAxis().isHorizontal() || !(blockState = blockState.setValue(FACING, direction2 = direction.getOpposite())).canSurvive(worldView, blockPos)) continue;
+            return blockState;
+        }
+        return null;
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, Rotation rot) {
+        return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, Mirror mirrorIn) {
+        return state.rotate(mirrorIn.getRotation(state.getValue(FACING)));
     }
 }
