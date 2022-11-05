@@ -35,7 +35,8 @@ public class EmeraldButton extends AbstractButton {
     public void appendHoverText(ItemStack pStack, @org.jetbrains.annotations.Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
         if (config.tooltips) {
             if(Screen.hasShiftDown()) {
-                pTooltip.add(new TranslatableComponent("infinitybuttons.tooltip.emerald_button"));
+                pTooltip.add(new TranslatableComponent("infinitybuttons.tooltip.emerald_button1"));
+                pTooltip.add(new TranslatableComponent("infinitybuttons.tooltip.emerald_button2"));
             } else {
                 pTooltip.add(new TranslatableComponent("infinitybuttons.tooltip.hold_shift"));
             }
