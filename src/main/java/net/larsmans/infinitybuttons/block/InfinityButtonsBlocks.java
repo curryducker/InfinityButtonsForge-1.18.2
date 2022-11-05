@@ -83,6 +83,15 @@ public class InfinityButtonsBlocks {
     public static final RegistryObject<Block> DARK_PRISMARINE_BUTTON = registerBlock("dark_prismarine_button",
             () -> new PrismarineButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.STONE)));
 
+    public static final RegistryObject<Block> SAND_BUTTON = registerBlock("sand_button",
+            () -> new FallingButton(false, BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.SAND)));
+
+    public static final RegistryObject<Block> RED_SAND_BUTTON = registerBlock("red_sand_button",
+            () -> new FallingButton(false, BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.SAND)));
+
+    public static final RegistryObject<Block> GRAVEL_BUTTON = registerBlock("gravel_button",
+            () -> new FallingButton(true, BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.GRAVEL)));
+
     /**
      * Large Buttons
      */
@@ -161,6 +170,15 @@ public class InfinityButtonsBlocks {
 
     public static final RegistryObject<Block> DARK_PRISMARINE_LARGE_BUTTON = registerBlock("dark_prismarine_large_button",
             () -> new PrismarineLargeButton(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.STONE)));
+
+    public static final RegistryObject<Block> SAND_LARGE_BUTTON = registerBlock("sand_large_button",
+            () -> new FallingLargeButton(false, BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.SAND)));
+
+    public static final RegistryObject<Block> RED_SAND_LARGE_BUTTON = registerBlock("red_sand_large_button",
+            () -> new FallingLargeButton(false, BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.SAND)));
+
+    public static final RegistryObject<Block> GRAVEL_LARGE_BUTTON = registerBlock("gravel_large_button",
+            () -> new FallingLargeButton(true, BlockBehaviour.Properties.of(Material.DECORATION).strength(0.5f).noCollission().sound(SoundType.GRAVEL)));
 
     /**
      * Emergency Buttons
