@@ -48,12 +48,12 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
     protected static final VoxelShape SOUTH_PRESSED_SHAPE = Block.box(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
     protected static final VoxelShape WEST_PRESSED_SHAPE = Block.box(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
     protected static final VoxelShape EAST_PRESSED_SHAPE = Block.box(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
-    private final boolean wooden;
+    private final boolean projectile;
 
-    protected AbstractButton(boolean isWooden, BlockBehaviour.Properties properties) {
+    protected AbstractButton(boolean projectile, BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(PRESSED, false).setValue(FACE, AttachFace.FLOOR));
-        this.wooden = isWooden;
+        this.projectile = projectile;
     }
 
     public abstract int getPressDuration();
@@ -106,11 +106,11 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
         world.scheduleTick(pos, this, this.getPressDuration());
     }
 
-    protected void playSound(@Nullable Player playerIn, LevelAccessor worldIn, BlockPos pos, boolean hitByArrow) {
-        worldIn.playSound(hitByArrow ? playerIn : null, pos, this.getSoundEvent(hitByArrow), SoundSource.BLOCKS, 0.3F, hitByArrow ? 0.6F : 0.5F);
+    protected void playSound(@Nullable Player playerIn, LevelAccessor worldIn, BlockPos pos, boolean pressed) {
+        worldIn.playSound(pressed ? playerIn : null, pos, this.getSoundEvent(pressed), SoundSource.BLOCKS, 0.3F, pressed ? 0.6F : 0.5F);
     }
 
-    protected abstract SoundEvent getSoundEvent(boolean isOn);
+    protected abstract SoundEvent getSoundEvent(boolean pressed);
 
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (!isMoving && !state.is(newState.getBlock())) {
@@ -136,7 +136,7 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
 
     public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
         if (state.getValue(PRESSED)) {
-            if (this.wooden) {
+            if (this.projectile) {
                 this.checkPressed(state, worldIn, pos);
             } else {
                 worldIn.setBlock(pos, state.setValue(PRESSED, false), 3);
@@ -149,7 +149,7 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
     }
 
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
-        if (!worldIn.isClientSide && this.wooden && !state.getValue(PRESSED)) {
+        if (!worldIn.isClientSide && this.projectile && !state.getValue(PRESSED)) {
             this.checkPressed(state, worldIn, pos);
         }
     }
