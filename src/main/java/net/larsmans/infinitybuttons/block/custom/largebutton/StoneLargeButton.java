@@ -1,21 +1,20 @@
 package net.larsmans.infinitybuttons.block.custom.largebutton;
 
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
+import net.larsmans.infinitybuttons.block.custom.button.StoneButton;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class StoneLargeButton extends AbstractLargeButton {
+public class StoneLargeButton extends StoneButton {
     public StoneLargeButton(BlockBehaviour.Properties properties) {
-        super(false, properties);
+        super(properties);
     }
 
     @Override
-    public int getPressDuration() {
-        return 20;
-    }
-
-    @Override
-    protected SoundEvent getSoundEvent(boolean isOn) {
-        return isOn ? SoundEvents.STONE_BUTTON_CLICK_ON : SoundEvents.STONE_BUTTON_CLICK_OFF;
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+        return LargeButtonShape.outlineShape(state);
     }
 }
