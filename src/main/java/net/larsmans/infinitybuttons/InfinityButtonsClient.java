@@ -26,7 +26,23 @@ public class InfinityButtonsClient {
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_BUTTON.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_LEVER.get(), RenderType.cutout());
-            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.RED_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.ORANGE_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.YELLOW_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.LIME_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.GREEN_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.CYAN_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.LIGHT_BLUE_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.BLUE_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.PURPLE_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.MAGENTA_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.PINK_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.BROWN_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.WHITE_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.LIGHT_GRAY_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.GRAY_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.BLACK_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.FANCY_SAFE_EMERGENCY_BUTTON.get(), RenderType.cutout());
             if (ModList.get().isLoaded("nethersdelight")) {
                 ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.PROPELPLANT_TORCH_BUTTON.get(), RenderType.cutout());
                 ItemBlockRenderTypes.setRenderLayer(InfinityButtonsBlocks.PROPELPLANT_WALL_TORCH_BUTTON.get(), RenderType.cutout());
