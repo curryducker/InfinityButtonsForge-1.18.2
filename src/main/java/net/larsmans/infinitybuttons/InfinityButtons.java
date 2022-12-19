@@ -4,9 +4,7 @@ import com.mojang.logging.LogUtils;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
-import net.larsmans.infinitybuttons.compat.NethersDelightBlocks;
-import net.larsmans.infinitybuttons.compat.NethersDelightItems;
-import net.larsmans.infinitybuttons.compat.QuarkBlocks;
+import net.larsmans.infinitybuttons.compat.*;
 import net.larsmans.infinitybuttons.item.InfinityButtonsItems;
 import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
 import net.minecraft.world.level.block.Block;
@@ -52,6 +50,12 @@ public class InfinityButtons
         }
         if (ModList.get().isLoaded("quark")){
             QuarkBlocks.registerCompatBlocks();
+        }
+        if (ModList.get().isLoaded("carpenter")){
+            CarpenterBlocks.registerCompatBlocks();
+        }
+        if (ModList.get().isLoaded("woodworks")){
+            WoodworksBlocks.registerCompatBlocks();
         }
 
         AutoConfig.register(InfinityButtonsConfig.class, Toml4jConfigSerializer::new);
