@@ -44,7 +44,7 @@ public class InfinityButtons
         InfinityButtonsBlocks.register(eventBus);
         InfinityButtonsSounds.register(eventBus);
 
-        if (ModList.get().isLoaded("nethers_delight")) {
+        if (ModList.get().isLoaded("nethersdelight")) {
             NethersDelightItems.registerCompatItems();
             NethersDelightBlocks.registerCompatBlocks();
         }
