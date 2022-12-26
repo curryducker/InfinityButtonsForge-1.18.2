@@ -40,7 +40,7 @@ public class DiamondButton extends AbstractButton{
     @Override
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
-        if (config.diamond_particles) {
+        if (config.diamondParticles) {
             if (rand.nextInt(3) == 0) {
                 switch (stateIn.getValue(FACE)) {
                     case FLOOR -> {
