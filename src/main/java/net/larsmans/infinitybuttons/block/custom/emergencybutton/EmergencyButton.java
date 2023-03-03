@@ -26,8 +26,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class EmergencyButton extends AbstractButton {
-
-    public static final BooleanProperty PRESSED = BooleanProperty.create("pressed");
     
     private static final VoxelShape STONE_DOWN  = Block.box(4, 0, 4, 12, 1, 12);
     private static final VoxelShape STONE_UP    = Block.box(4, 15, 4, 12, 16, 12);
