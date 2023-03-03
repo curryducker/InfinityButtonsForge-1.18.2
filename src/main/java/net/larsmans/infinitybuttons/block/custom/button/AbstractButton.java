@@ -1,5 +1,7 @@
 package net.larsmans.infinitybuttons.block.custom.button;
 
+import me.shedaniel.autoconfig.AutoConfig;
+import net.larsmans.infinitybuttons.InfinityButtonsConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -30,6 +32,7 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBlock {
+    protected InfinityButtonsConfig config = AutoConfig.getConfigHolder(InfinityButtonsConfig.class).getConfig();
     public static final BooleanProperty PRESSED = BooleanProperty.create("pressed");
 
     protected static final VoxelShape CEILING_X_SHAPE = Block.box(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
@@ -61,7 +64,7 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         Direction direction = state.getValue(FACING);
         boolean flag = state.getValue(PRESSED);
-        switch((AttachFace)state.getValue(FACE)) {
+        switch(state.getValue(FACE)) {
             case FLOOR -> {
                 if (direction.getAxis() == Direction.Axis.X) {
                     return flag ? FLOOR_X_PRESSED_SHAPE : FLOOR_X_SHAPE;
@@ -140,7 +143,7 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
             } else {
                 worldIn.setBlock(pos, state.setValue(PRESSED, false), 3);
                 this.updateNeighbors(state, worldIn, pos);
-                this.playSound((Player)null, worldIn, pos, false);
+                this.playSound(null, worldIn, pos, false);
                 worldIn.gameEvent(GameEvent.BLOCK_UNPRESS, pos);
             }
 
@@ -160,7 +163,7 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
         if (flag != flag1) {
             worldIn.setBlock(pos, state.setValue(PRESSED, flag), 3);
             this.updateNeighbors(state, worldIn, pos);
-            this.playSound((Player)null, worldIn, pos, flag);
+            this.playSound(null, worldIn, pos, flag);
         }
 
         if (flag) {
