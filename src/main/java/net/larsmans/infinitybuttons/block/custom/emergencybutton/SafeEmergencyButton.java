@@ -2,8 +2,8 @@ package net.larsmans.infinitybuttons.block.custom.emergencybutton;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import net.larsmans.infinitybuttons.InfinityButtonsConfig;
+import net.larsmans.infinitybuttons.block.InfinityButtonsUtil;
 import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -13,7 +13,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -22,7 +21,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.AttachFace;
@@ -87,7 +85,7 @@ public class SafeEmergencyButton extends FaceAttachedHorizontalDirectionalBlock 
     private static final VoxelShape WEST_PRESSED_SHAPE = Shapes.or(
             Block.box(13, 5, 5, 15, 11, 11), STONE_WEST);
 
-    public SafeEmergencyButton(BlockBehaviour.Properties properties) {
+    public SafeEmergencyButton(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(STATE, SEBStateEnum.CLOSED).setValue(FACE, AttachFace.FLOOR));
     }
@@ -264,10 +262,7 @@ public class SafeEmergencyButton extends FaceAttachedHorizontalDirectionalBlock 
 
     @Override
     public int getDirectSignal(BlockState blockState, BlockGetter blockAccess, BlockPos pos, Direction side) {
-        if (blockState.getValue(STATE) == SEBStateEnum.PRESSED && EmergencyButton.getConnectedDirection(blockState) == side) {
-            return 15;
-        }
-        return 0;
+        return (blockState.getValue(STATE) == SEBStateEnum.PRESSED && EmergencyButton.getConnectedDirection(blockState) == side) ? 15 : 0;
     }
 
     @Override
@@ -293,13 +288,7 @@ public class SafeEmergencyButton extends FaceAttachedHorizontalDirectionalBlock 
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack pStack, @org.jetbrains.annotations.Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-        if (config.tooltips) {
-            if(Screen.hasShiftDown()) {
-                pTooltip.add(new TranslatableComponent("infinitybuttons.tooltip.safe_emergency_button"));
-            } else {
-                pTooltip.add(new TranslatableComponent("infinitybuttons.tooltip.hold_shift"));
-            }
-        }
+        InfinityButtonsUtil.tooltip(pTooltip, "safe_emergency_button");
         super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
     }
 }

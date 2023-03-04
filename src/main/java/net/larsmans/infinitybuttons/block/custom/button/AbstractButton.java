@@ -51,17 +51,24 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
     protected static final VoxelShape SOUTH_PRESSED_SHAPE = Block.box(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
     protected static final VoxelShape WEST_PRESSED_SHAPE = Block.box(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
     protected static final VoxelShape EAST_PRESSED_SHAPE = Block.box(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
-    private final boolean projectile;
 
-    protected AbstractButton(boolean projectile, BlockBehaviour.Properties properties) {
+    private final boolean projectile;
+    private final boolean large;
+
+    protected AbstractButton(boolean projectile, boolean large, BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(PRESSED, false).setValue(FACE, AttachFace.FLOOR));
         this.projectile = projectile;
+        this.large = large;
     }
 
     public abstract int getPressDuration();
 
+    @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+        if (large) {
+            return LargeButtonShape.outlineShape(state);
+        }
         Direction direction = state.getValue(FACING);
         boolean flag = state.getValue(PRESSED);
         switch(state.getValue(FACE)) {
@@ -92,6 +99,7 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
         return flag ? CEILING_Z_PRESSED_SHAPE : CEILING_Z_SHAPE;
     }
 
+    @Override
     public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         if (state.getValue(PRESSED)) {
             return InteractionResult.CONSUME;
@@ -114,6 +122,7 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
 
     protected abstract SoundEvent getSoundEvent(boolean pressed);
 
+    @Override
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (!isMoving && !state.is(newState.getBlock())) {
             if (state.getValue(PRESSED)) {
@@ -124,18 +133,22 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
         }
     }
 
+    @Override
     public int getSignal(BlockState blockState, BlockGetter blockAccess, BlockPos pos, Direction side) {
         return blockState.getValue(PRESSED) ? 15 : 0;
     }
 
+    @Override
     public int getDirectSignal(BlockState blockState, BlockGetter blockAccess, BlockPos pos, Direction side) {
         return blockState.getValue(PRESSED) && getConnectedDirection(blockState) == side ? 15 : 0;
     }
 
+    @Override
     public boolean isSignalSource(BlockState state) {
         return true;
     }
 
+    @Override
     public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
         if (state.getValue(PRESSED)) {
             if (this.projectile) {
@@ -150,6 +163,7 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
         }
     }
 
+    @Override
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entityIn) {
         if (!worldIn.isClientSide && this.projectile && !state.getValue(PRESSED)) {
             this.checkPressed(state, worldIn, pos);
@@ -177,6 +191,7 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
         worldIn.updateNeighborsAt(pos.relative(getConnectedDirection(state).getOpposite()), this);
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, PRESSED, FACE);
     }
