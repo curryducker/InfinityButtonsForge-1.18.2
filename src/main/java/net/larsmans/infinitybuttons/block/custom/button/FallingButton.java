@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.List;
 import java.util.Random;
 
-public class FallingButton extends AbstractButton{
+public class FallingButton extends AbstractSmallButton{
 
     public boolean gravel;
 
