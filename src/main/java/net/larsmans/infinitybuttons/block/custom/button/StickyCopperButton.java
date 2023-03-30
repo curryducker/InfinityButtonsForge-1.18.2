@@ -1,10 +1,8 @@
 package net.larsmans.infinitybuttons.block.custom.button;
 
-import net.larsmans.infinitybuttons.block.InfinityButtonsUtil;
-import net.minecraft.client.gui.screens.Screen;
+import net.larsmans.infinitybuttons.InfinityButtonsUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
