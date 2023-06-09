@@ -63,9 +63,51 @@ A mod which adds new exciting buttons!
     ordering="NONE"
     side="BOTH"
 [[dependencies.infinitybuttons]]
-    modId="quark"
+    modId="jade"
     mandatory=false
-    versionRange="[3.2-358,)"
+    versionRange="[5.2.6,)"
+    ordering="BEFORE"
+    side="BOTH"
+[[dependencies.infinitybuttons]]
+    modId="atmospheric"
+    mandatory=false
+    versionRange="[4.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.infinitybuttons]]
+    modId="autumnity"
+    mandatory=false
+    versionRange="[3.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.infinitybuttons]]
+    modId="buzzier_bees"
+    mandatory=false
+    versionRange="[4.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.infinitybuttons]]
+    modId="carpenter"
+    mandatory=false
+    versionRange="[1.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.infinitybuttons]]
+    modId="clayworks"
+    mandatory=false
+    versionRange="[1.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.infinitybuttons]]
+    modId="environmental"
+    mandatory=false
+    versionRange="[2.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.infinitybuttons]]
+    modId="neapolitan"
+    mandatory=false
+    versionRange="[3.0.0,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.infinitybuttons]]
@@ -75,9 +117,21 @@ A mod which adds new exciting buttons!
     ordering="AFTER"
     side="BOTH"
 [[dependencies.infinitybuttons]]
-    modId="carpenter"
+    modId="quark"
     mandatory=false
-    versionRange="[1.0.0,)"
+    versionRange="[3.2-358,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.infinitybuttons]]
+    modId="savageandravage"
+    mandatory=false
+    versionRange="[4.0.1,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.infinitybuttons]]
+    modId="upgrade_aquatic"
+    mandatory=false
+    versionRange="[4.0.0,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.infinitybuttons]]

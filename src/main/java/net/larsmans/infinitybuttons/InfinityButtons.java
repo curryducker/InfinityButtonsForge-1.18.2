@@ -49,6 +49,30 @@ public class InfinityButtons
         if (ModList.get().isLoaded("woodworks")){
             WoodworksBlocks.registerCompatBlocks();
         }
+        if (ModList.get().isLoaded("clayworks")){
+            ClayworksBlocks.registerCompatBlocks();
+        }
+        if (ModList.get().isLoaded("environmental")){
+            EnvironmentalBlocks.registerCompatBlocks();
+        }
+        if (ModList.get().isLoaded("autumnity")){
+            AutumnityBlocks.registerCompatBlocks();
+        }
+        if (ModList.get().isLoaded("atmospheric")){
+            AtmosphericBlocks.registerCompatBlocks();
+        }
+        if (ModList.get().isLoaded("upgrade_aquatic")){
+            UpgradeAquaticBlocks.registerCompatBlocks();
+        }
+        if (ModList.get().isLoaded("buzzier_bees")){
+            BuzzierBeesBlocks.registerCompatBlocks();
+        }
+        if (ModList.get().isLoaded("neapolitan")){
+            NeapolitanBlocks.registerCompatBlocks();
+        }
+        if (ModList.get().isLoaded("savage_and_ravage")){
+            SavageAndRavageBlocks.registerCompatBlocks();
+        }
 
         AutoConfig.register(InfinityButtonsConfig.class, Toml4jConfigSerializer::new);
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> InfinityButtonsConfigMenu::registerConfigMenu);

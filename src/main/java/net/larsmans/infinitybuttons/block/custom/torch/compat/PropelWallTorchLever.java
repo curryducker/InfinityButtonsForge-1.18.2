@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraftforge.api.distmarker.Dist;
@@ -15,8 +16,8 @@ import java.util.List;
 import java.util.Random;
 
 public class PropelWallTorchLever extends WallTorchLever {
-    public PropelWallTorchLever(Properties properties) {
-        super(properties, ParticleTypes.FLAME);
+    public PropelWallTorchLever(Properties properties, Block jadeBlock) {
+        super(properties, ParticleTypes.FLAME, jadeBlock);
     }
 
     @Override
