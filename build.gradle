@@ -178,6 +178,7 @@ dependencies {
     compileOnly fg.deobf("curse.maven:savage-and-ravage-381736:4396963")
     compileOnly fg.deobf("curse.maven:upgrade-aquatic-326895:4365140")
     compileOnly fg.deobf("curse.maven:woodworks-543610:4396956")
+    compileOnly fg.deobf("curse.maven:create-328085:4550986")
 
     implementation fg.deobf("curse.maven:jade-324717:4082408")
 
