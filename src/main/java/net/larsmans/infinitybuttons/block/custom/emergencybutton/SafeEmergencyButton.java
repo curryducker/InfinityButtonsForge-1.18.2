@@ -7,7 +7,6 @@ import net.larsmans.infinitybuttons.config.InfinityButtonsConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -208,10 +207,10 @@ public class SafeEmergencyButton extends FaceAttachedHorizontalDirectionalBlock 
                     if (config.alarmSoundType != AlarmEnum.OFF) {
                         EmergencyButton.emergencySound(worldIn, pos, player);
                     }
-                    if (!worldIn.isClientSide) {
+                    if (!worldIn.isClientSide && config.alarmVillagerPanic) {
                         List<LivingEntity> villagers = worldIn.getEntitiesOfClass(LivingEntity.class, new AABB(pos).inflate(config.alarmSoundRange), entity -> entity.getType() == EntityType.VILLAGER);
                         for (LivingEntity villager : villagers) {
-                            if (villager instanceof Villager villagerEntity && config.alarmVillagerPanic) {
+                            if (villager instanceof Villager villagerEntity) {
                                 villagerEntity.getBrain().setMemory(MemoryModuleType.HEARD_BELL_TIME, worldIn.getGameTime());
                             }
                         }
@@ -224,7 +223,7 @@ public class SafeEmergencyButton extends FaceAttachedHorizontalDirectionalBlock 
                     this.openCase(state, worldIn, pos);
                     this.playToggleSound(player, worldIn, pos, true);
                 } else {
-                    player.displayClientMessage(new TranslatableComponent("infinitybuttons.actionbar.closed_safety_button"), true);
+                    player.displayClientMessage(InfinityButtonsUtil.SAFE_EMERGENCY_BUTTON_ACTIONBAR_TEXT, true);
                     return InteractionResult.CONSUME;
                 }
             }
