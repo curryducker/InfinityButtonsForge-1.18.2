@@ -1,6 +1,10 @@
 package net.larsmans.infinitybuttons;
 
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import me.shedaniel.autoconfig.AutoConfig;
+import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
 import net.larsmans.infinitybuttons.config.InfinityButtonsConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Camera;
@@ -14,6 +18,7 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
@@ -21,6 +26,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class InfinityButtonsUtil {
     public static final BooleanProperty PRESSED = BooleanProperty.create("pressed");
@@ -28,6 +34,13 @@ public class InfinityButtonsUtil {
 
     public static final MutableComponent HOLD_SHIFT_TEXT = new TranslatableComponent("infinitybuttons.tooltip.hold_shift").withStyle(ChatFormatting.GRAY);
     public static final MutableComponent SAFE_EMERGENCY_BUTTON_ACTIONBAR_TEXT = new TranslatableComponent("infinitybuttons.actionbar.closed_safety_button");
+
+    public static Supplier<BiMap<Block, Block>> NEXT_BY_BLOCK;
+    public static Supplier<BiMap<Block, Block>> PREVIOUS_BY_BLOCK;
+    public static Supplier<BiMap<Block, Block>> WAX_ON_BY_BLOCK;
+    public static Supplier<BiMap<Block, Block>> WAX_OFF_BY_BLOCK;
+    public static Supplier<BiMap<Block, Block>> STICKY_ON_BY_BLOCK;
+    public static Supplier<BiMap<Block, Block>> STICKY_OFF_BY_BLOCK;
 
     @OnlyIn(Dist.CLIENT)
     public static void tooltip(List<Component> tooltip, String name) {
@@ -68,6 +81,49 @@ public class InfinityButtonsUtil {
                 z += d2 / d3 * 2.0D;
             }
             level.playLocalSound(x, y, z, soundEvent, soundSource, 1.0F, 1.0F, false);
+        }
+    }
+
+    public static void buildNext() {
+        if (NEXT_BY_BLOCK == null) {
+            NEXT_BY_BLOCK = Suppliers.memoize(() -> ImmutableBiMap.<Block, Block>builder()
+                    .put(InfinityButtonsBlocks.COPPER_BUTTON.get(), InfinityButtonsBlocks.EXPOSED_COPPER_BUTTON.get())
+                    .put(InfinityButtonsBlocks.EXPOSED_COPPER_BUTTON.get(), InfinityButtonsBlocks.WEATHERED_COPPER_BUTTON.get())
+                    .put(InfinityButtonsBlocks.WEATHERED_COPPER_BUTTON.get(), InfinityButtonsBlocks.OXIDIZED_COPPER_BUTTON.get())
+                    .put(InfinityButtonsBlocks.COPPER_LARGE_BUTTON.get(), InfinityButtonsBlocks.EXPOSED_COPPER_LARGE_BUTTON.get())
+                    .put(InfinityButtonsBlocks.EXPOSED_COPPER_LARGE_BUTTON.get(), InfinityButtonsBlocks.WEATHERED_COPPER_LARGE_BUTTON.get())
+                    .put(InfinityButtonsBlocks.WEATHERED_COPPER_LARGE_BUTTON.get(), InfinityButtonsBlocks.OXIDIZED_COPPER_LARGE_BUTTON.get()).build());
+            PREVIOUS_BY_BLOCK = Suppliers.memoize(() -> NEXT_BY_BLOCK.get().inverse());
+        }
+    }
+
+    public static void buildWax() {
+        if (WAX_ON_BY_BLOCK == null) {
+            WAX_ON_BY_BLOCK = Suppliers.memoize(() -> ImmutableBiMap.<Block, Block>builder()
+                    .put(InfinityButtonsBlocks.COPPER_BUTTON.get(), InfinityButtonsBlocks.WAXED_COPPER_BUTTON.get())
+                    .put(InfinityButtonsBlocks.EXPOSED_COPPER_BUTTON.get(), InfinityButtonsBlocks.WAXED_EXPOSED_COPPER_BUTTON.get())
+                    .put(InfinityButtonsBlocks.WEATHERED_COPPER_BUTTON.get(), InfinityButtonsBlocks.WAXED_WEATHERED_COPPER_BUTTON.get())
+                    .put(InfinityButtonsBlocks.OXIDIZED_COPPER_BUTTON.get(), InfinityButtonsBlocks.WAXED_OXIDIZED_COPPER_BUTTON.get())
+                    .put(InfinityButtonsBlocks.COPPER_LARGE_BUTTON.get(), InfinityButtonsBlocks.WAXED_COPPER_LARGE_BUTTON.get())
+                    .put(InfinityButtonsBlocks.EXPOSED_COPPER_LARGE_BUTTON.get(), InfinityButtonsBlocks.WAXED_EXPOSED_COPPER_LARGE_BUTTON.get())
+                    .put(InfinityButtonsBlocks.WEATHERED_COPPER_LARGE_BUTTON.get(), InfinityButtonsBlocks.WAXED_WEATHERED_COPPER_LARGE_BUTTON.get())
+                    .put(InfinityButtonsBlocks.OXIDIZED_COPPER_LARGE_BUTTON.get(), InfinityButtonsBlocks.WAXED_OXIDIZED_COPPER_LARGE_BUTTON.get()).build());
+            WAX_OFF_BY_BLOCK = Suppliers.memoize(() -> WAX_ON_BY_BLOCK.get().inverse());
+        }
+    }
+
+    public static void buildSticky() {
+        if (STICKY_ON_BY_BLOCK == null) {
+            STICKY_ON_BY_BLOCK = Suppliers.memoize(() -> ImmutableBiMap.<Block, Block>builder()
+                    .put(InfinityButtonsBlocks.WAXED_COPPER_BUTTON.get(), InfinityButtonsBlocks.STICKY_COPPER_BUTTON.get())
+                    .put(InfinityButtonsBlocks.WAXED_EXPOSED_COPPER_BUTTON.get(), InfinityButtonsBlocks.STICKY_EXPOSED_COPPER_BUTTON.get())
+                    .put(InfinityButtonsBlocks.WAXED_WEATHERED_COPPER_BUTTON.get(), InfinityButtonsBlocks.STICKY_WEATHERED_COPPER_BUTTON.get())
+                    .put(InfinityButtonsBlocks.WAXED_OXIDIZED_COPPER_BUTTON.get(), InfinityButtonsBlocks.STICKY_OXIDIZED_COPPER_BUTTON.get())
+                    .put(InfinityButtonsBlocks.WAXED_COPPER_LARGE_BUTTON.get(), InfinityButtonsBlocks.STICKY_COPPER_LARGE_BUTTON.get())
+                    .put(InfinityButtonsBlocks.WAXED_EXPOSED_COPPER_LARGE_BUTTON.get(), InfinityButtonsBlocks.STICKY_EXPOSED_COPPER_LARGE_BUTTON.get())
+                    .put(InfinityButtonsBlocks.WAXED_WEATHERED_COPPER_LARGE_BUTTON.get(), InfinityButtonsBlocks.STICKY_WEATHERED_COPPER_LARGE_BUTTON.get())
+                    .put(InfinityButtonsBlocks.WAXED_OXIDIZED_COPPER_LARGE_BUTTON.get(), InfinityButtonsBlocks.STICKY_OXIDIZED_COPPER_LARGE_BUTTON.get()).build());
+            STICKY_OFF_BY_BLOCK = Suppliers.memoize(() -> STICKY_ON_BY_BLOCK.get().inverse());
         }
     }
 }
