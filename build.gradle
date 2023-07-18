@@ -155,6 +155,10 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
+    maven {
+        name 'Progwm16 maven'
+        url 'https://dvs1.progwml6.com/files/maven'
+    }
     maven { url "https://maven.shedaniel.me/" }
     maven {
         name "blamejared"
@@ -175,6 +179,10 @@ dependencies {
 
     api fg.deobf("me.shedaniel.cloth:cloth-config-forge:6.4.90")
 
+    compileOnly fg.deobf("mezz.jei:jei-1.18.2-common-api:10.2.1.283")
+    compileOnly fg.deobf("mezz.jei:jei-1.18.2-forge-api:10.2.1.283")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.18.2-forge:10.2.1.283")
+
     compileOnly fg.deobf("vazkii.autoreglib:AutoRegLib:1.7-53.111")
     compileOnly fg.deobf("vazkii.quark:Quark:3.2-358.2422")
     compileOnly fg.deobf("curse.maven:atmospheric-362393:4367068")
@@ -190,6 +198,7 @@ dependencies {
     compileOnly fg.deobf("curse.maven:upgrade-aquatic-326895:4365140")
     compileOnly fg.deobf("curse.maven:woodworks-543610:4396956")
     compileOnly fg.deobf("curse.maven:create-328085:4550986")
+    compileOnly fg.deobf("curse.maven:copperized-567666:3722169")
 
     implementation fg.deobf("curse.maven:jade-324717:4082408")
 
