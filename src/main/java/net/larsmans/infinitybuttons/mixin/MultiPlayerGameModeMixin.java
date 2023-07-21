@@ -1,5 +1,6 @@
 package net.larsmans.infinitybuttons.mixin;
 
+import net.larsmans.infinitybuttons.InfinityButtonsUtil;
 import net.larsmans.infinitybuttons.block.custom.emergencybutton.SafeEmergencyButton;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.ClientPacketListener;
@@ -27,7 +28,7 @@ public abstract class MultiPlayerGameModeMixin {
     private void useItemOn(LocalPlayer player, ClientLevel world, InteractionHand hand, BlockHitResult hitResult, CallbackInfoReturnable<InteractionResult> cir) {
         BlockState state = world.getBlockState(hitResult.getBlockPos());
         Block block = state.getBlock();
-        if (block instanceof SafeEmergencyButton) {
+        if (InfinityButtonsUtil.crouchClickOverrides(block)) {
             this.connection.send(new ServerboundUseItemOnPacket(hand, hitResult));
             cir.setReturnValue(block.use(state, world, hitResult.getBlockPos(), player, hand, hitResult));
         }
