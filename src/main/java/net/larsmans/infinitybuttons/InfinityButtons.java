@@ -111,7 +111,7 @@ public class InfinityButtons
         for (Item safe : ForgeRegistries.ITEMS.getValues()) {
             if (safe instanceof SafeEmergencyButtonItem) {
                 DispenserBlock.registerBehavior(safe, new OptionalDispenseItemBehavior() {
-                    protected ItemStack execute(@NotNull BlockSource blockSource, @NotNull ItemStack itemStack) {
+                    protected @NotNull ItemStack execute(@NotNull BlockSource blockSource, @NotNull ItemStack itemStack) {
                         this.setSuccess(ArmorItem.dispenseArmor(blockSource, itemStack));
                         return itemStack;
                     }
