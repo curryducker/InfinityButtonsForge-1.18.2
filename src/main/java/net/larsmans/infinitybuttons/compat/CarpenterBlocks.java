@@ -33,7 +33,7 @@ public class CarpenterBlocks {
      */
 
     private static Block byName(String block) {
-        return ForgeRegistries.BLOCKS.getValue(new ResourceLocation("woodworks", block));
+        return ForgeRegistries.BLOCKS.getValue(new ResourceLocation("carpenter", block));
     }
 
     private static RegistryObject<Block> registerBookshelf(String wood) {
