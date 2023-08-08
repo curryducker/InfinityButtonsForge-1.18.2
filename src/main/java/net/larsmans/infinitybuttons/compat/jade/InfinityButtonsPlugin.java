@@ -5,6 +5,7 @@ import mcp.mobius.waila.api.event.WailaRayTraceEvent;
 import mcp.mobius.waila.impl.config.PluginConfig;
 import net.larsmans.infinitybuttons.InfinityButtons;
 import net.larsmans.infinitybuttons.block.custom.HoglinMountButton;
+import net.larsmans.infinitybuttons.block.custom.LanternButton;
 import net.larsmans.infinitybuttons.block.custom.secretbutton.AbstractSecretButton;
 import net.larsmans.infinitybuttons.block.custom.torch.RedstoneTorchButton;
 import net.larsmans.infinitybuttons.block.custom.torch.TorchButton;
@@ -26,6 +27,7 @@ public class InfinityButtonsPlugin implements IWailaPlugin {
 
     static final ResourceLocation CONFIG_HIDE_SECRET_BUTTONS = new ResourceLocation(InfinityButtons.MOD_ID, "hide_secret_buttons");
     static final ResourceLocation CONFIG_HIDE_TORCH_BUTTONS = new ResourceLocation(InfinityButtons.MOD_ID, "hide_torch_buttons");
+    static final ResourceLocation CONFIG_HIDE_LANTERN_BUTTONS = new ResourceLocation(InfinityButtons.MOD_ID, "hide_lantern_buttons");
 
     private static Block HOGLIN_MOUNT = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("nethersdelight", "hoglin_mount"));
 
@@ -89,6 +91,19 @@ public class InfinityButtonsPlugin implements IWailaPlugin {
                 );
                 event.setAccessor(accessor);
             }
+
+            if (hidden(CONFIG_HIDE_LANTERN_BUTTONS) && blockAccessor.getBlock() instanceof LanternButton lanternButton) {
+                accessor = client.createBlockAccessor(
+                        lanternButton.jadeBlock.defaultBlockState(),
+                        null,
+                        accessor.getLevel(),
+                        accessor.getPlayer(),
+                        null,
+                        blockAccessor.getHitResult(),
+                        accessor.isServerConnected()
+                );
+                event.setAccessor(accessor);
+            }
         }
     }
 
@@ -99,7 +114,8 @@ public class InfinityButtonsPlugin implements IWailaPlugin {
 
     @Override
     public void register(IWailaCommonRegistration registration) {
-        registration.addSyncedConfig(CONFIG_HIDE_SECRET_BUTTONS, true);
-        registration.addSyncedConfig(CONFIG_HIDE_TORCH_BUTTONS, true);
+        registration.addConfig(CONFIG_HIDE_SECRET_BUTTONS, true);
+        registration.addConfig(CONFIG_HIDE_TORCH_BUTTONS, true);
+        registration.addConfig(CONFIG_HIDE_LANTERN_BUTTONS, true);
     }
 }
