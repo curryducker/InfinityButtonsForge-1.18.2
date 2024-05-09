@@ -1,3 +1,7 @@
-Forge:
-- Bookshelf Secret Buttons made from Abnormals wood types are now able to use Woodworks.
-- Fixed Hoglin Mount Button missing model when turned off. (1.20.1)
+- Partially added translations for:
+    - Korean ([gisellevonbingen](https://github.com/TeamDiopside/InfinityButtons/pull/33))
+    - Japanese ([Furikorifuto](https://github.com/TeamDiopside/InfinityButtons/pull/35))
+    - German ([DerCoderJo](https://github.com/TeamDiopside/InfinityButtons/pull/39))
+
+Fabric:
+- Fixed a crash using Jade ([Snownee](https://github.com/TeamDiopside/InfinityButtons/pull/40))
